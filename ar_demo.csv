@@ -1,0 +1,36 @@
+Client Label,Inv Amt (INR),Due Dt,Days Late,Last Touch,Collector,Payment Risk,A/R State,Region
+Bharat Dental Chain Pvt Ltd,285000,05-Mar-26,30,18-Mar-26,Rohit S.,High,Overdue,South
+Surya Multispecialty Clinics,320000,01-Mar-26,34,12-Mar-26,Priya M.,High,Escalated,West
+Apex Pharma Distributors,165000,14-Mar-26,21,20-Mar-26,,High,Overdue,North
+Greenfield Hotels & Resorts,192000,16-Mar-26,19,,,High,Overdue,West
+Sri Balaji Diagnostics,12500,01-Mar-26,34,25-Feb-26,Karan T.,Medium,Overdue,South
+Decent Mobility Solutions,18000,10-Mar-26,25,28-Feb-26,,Medium,Overdue,Central
+Vayu Logistics Pvt Ltd,95000,20-Mar-26,15,02-Apr-26,Ananya K.,Low,Promise to Pay,North
+KR Education Group,78000,25-Mar-26,10,01-Apr-26,Deepak V.,Low,Promise to Pay,South
+Nova MedLabs Pvt Ltd,45000,15-Mar-26,20,03-Apr-26,Rohit S.,Low,Paid,West
+Indus Manufacturing Co.,210000,10-Mar-26,25,28-Mar-26,Priya M.,High,Disputed,North
+Trident Pharma Distributors,55000,28-Mar-26,7,01-Apr-26,Karan T.,Medium,Open,East
+Sunrise Dental Solutions,88000,22-Mar-26,13,02-Apr-26,Ananya K.,Medium,Overdue,South
+Vantage Mobility Pvt Ltd,32000,18-Mar-26,17,,Deepak V.,High,Overdue,West
+Pallavi Diagnostics & Labs,48000,15-Mar-26,20,,Rohit S.,High,Overdue,South
+Hira Hotels Pvt Ltd,72000,20-Mar-26,15,,,Medium,Open,North
+Prism Education Services,25000,25-Mar-26,10,,,Medium,Overdue,East
+Regal Dental Pvt Ltd,135000,12-Mar-26,23,25-Mar-26,Priya M.,High,Overdue,South
+Omega Logistics & Supply,98000,17-Mar-26,18,22-Mar-26,Karan T.,High,Overdue,West
+Archit Manufacturing Ltd,62000,24-Mar-26,11,30-Mar-26,Ananya K.,Medium,Open,North
+Sona Medicals Pvt Ltd,14000,05-Feb-26,58,10-Feb-26,Deepak V.,High,Escalated,South
+Bloom MedLabs,8500,15-Feb-26,48,20-Feb-26,,High,Overdue,East
+metro dental distributors,175000,08-Mar-26,27,,Rohit S.,High,Overdue,West
+Kinetic Mobility Pvt Ltd,115000,11-Mar-26,24,15-Mar-26,,Medium,Overdue,Central
+Kalindi Education Hub,42000,26-Mar-26,9,03-Apr-26,Priya M.,Low,Open,North
+swarna hotels pvt ltd,88500,19-Mar-26,16,29-Mar-26,Karan T.,Medium,Overdue,South
+Jupiter Pharma Supply,145000,07-Mar-26,28,21-Mar-26,Ananya K.,High,Escalated,East
+Naveen Dental Clinic,28000,28-Mar-26,7,01-Apr-26,Deepak V.,Low,Open,Central
+Sagar Medicals & Distributors,67000,21-Mar-26,14,26-Mar-26,Rohit S.,Medium,Overdue,North
+Prakash Logistics Pvt Ltd,39000,24-Mar-26,11,28-Mar-26,Priya M.,Low,Open,West
+Amrit Manufacturing Co.,52000,18-Mar-26,17,23-Mar-26,Karan T.,Medium,Overdue,South
+Vedic Education Group,19500,14-Mar-26,21,18-Mar-26,,Medium,Overdue,North
+Pioneer Diagnostics,31000,22-Mar-26,13,27-Mar-26,Ananya K.,Low,Open,East
+Crystal Hotels & Suites,245000,06-Mar-26,29,14-Mar-26,Deepak V.,High,Escalated,West
+Shanthi Dental Solutions,22000,20-Mar-26,15,25-Mar-26,Rohit S.,Low,Open,South
+Falcon Mobility Pvt Ltd,76000,19-Mar-26,16,,Priya M.,Medium,Overdue,North

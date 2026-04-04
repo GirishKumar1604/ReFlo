@@ -1,0 +1,36 @@
+Client Label,Inv Amt (INR),Due Dt,Days Late,Last Touch,Collector,Payment Risk,A/R State,Region
+Narayana Diagnostics Pvt Ltd,285000,03-Mar-26,32,12-Mar-26,Priya Mehta,High,Overdue,Hyderabad
+Balaji Pharma distributors,242000,07-Mar-26,28,10-Mar-26,Ramesh K,High,Overdue,Pune
+Sri Venkata Mobility Soln,158000,14-Mar-26,21,,,High,Overdue,Chennai
+kamakshi dental chain,127500,10-Mar-26,25,,,Medium,Overdue,Bangalore
+Prakash General Stores,11200,15-Jan-26,79,20-Jan-26,Anand S,Low,Overdue,Hyderabad
+Sunrise Hostel pvt ltd,8750,28-Jan-26,66,01-Feb-26,Priya Mehta,Low,Overdue,Chennai
+Apollo Logistics Hub,93000,08-Mar-26,27,02-Apr-26,Kiran T,Medium,Promise to Pay,Mumbai
+Meena Hotels & Resorts,178000,15-Mar-26,20,01-Apr-26,Ramesh K,Medium,Promise to Pay,Hyderabad
+Ravi Kumar Clinics,45000,20-Feb-26,43,25-Mar-26,Anand S,Low,Paid,Hyderabad
+Deccan Education Group,67000,18-Feb-26,45,01-Mar-26,Kiran T,High,Disputed,Pune
+Paramount Labs Pvt Ltd,205000,01-Mar-26,34,09-Mar-26,Priya Mehta,High,Overdue,Bangalore
+Greenpath Logistics,88000,18-Mar-26,17,02-Apr-26,Ramesh K,Medium,Overdue,Chennai
+bharati dental solutions,34000,20-Mar-26,15,03-Apr-26,Kiran T,Medium,Overdue,Hyderabad
+Krishna Medical Devices,76000,05-Mar-26,30,,,High,Overdue,Mumbai
+Sree Sai Distributors,52000,12-Mar-26,23,,Priya Mehta,Medium,Overdue,Hyderabad
+Laxmi Pharma traders,31000,22-Mar-26,13,,,Low,Overdue,Chennai
+metro packaging works,145000,09-Mar-26,26,,,High,Overdue,Pune
+Pioneer edu services,28000,28-Mar-26,7,01-Apr-26,Anand S,Low,Overdue,Bangalore
+Suresh Medicals,19500,25-Mar-26,10,27-Mar-26,Priya Mehta,Low,Overdue,Hyderabad
+delta mobility pvt ltd,112000,11-Mar-26,24,15-Mar-26,Ramesh K,High,Overdue,Mumbai
+Horizon Hotels Group,67500,16-Mar-26,19,22-Mar-26,Kiran T,Medium,Overdue,Chennai
+Venkateswara Clinics,23000,30-Mar-26,5,,Anand S,Low,Overdue,Hyderabad
+Rajiv Sons distributors,89000,08-Mar-26,27,20-Mar-26,Ramesh K,High,Overdue,Pune
+GVK Labs,155000,13-Mar-26,22,18-Mar-26,Priya Mehta,High,Overdue,Hyderabad
+Tirumala Transport Co,44000,17-Mar-26,18,28-Mar-26,Kiran T,Medium,Overdue,Bangalore
+BMS Dental chain,71000,25-Feb-26,38,05-Mar-26,Ramesh K,High,Overdue,Chennai
+Sairam Packaging Ltd,18000,24-Mar-26,11,03-Apr-26,Anand S,Low,Overdue,Hyderabad
+Lotus Hospital Supply,96000,06-Mar-26,29,16-Mar-26,,High,Overdue,Mumbai
+Premier diagnostics,38500,19-Mar-26,16,30-Mar-26,Kiran T,Medium,Overdue,Hyderabad
+Ganesh mobility services,62000,21-Mar-26,14,,,Medium,Overdue,Chennai
+Southern Logistics Group,188000,28-Feb-26,35,08-Mar-26,Priya Mehta,High,Overdue,Bangalore
+Keerthi Educational Trust,41000,23-Mar-26,12,01-Apr-26,Ramesh K,Low,Promise to Pay,Hyderabad
+Mahavir Dental lab,29000,10-Feb-26,53,15-Feb-26,,High,Overdue,Pune
+Siddhartha hotel group,135000,14-Mar-26,21,28-Mar-26,Kiran T,Medium,Overdue,Chennai
+Nile distributors pvt ltd,57000,26-Mar-26,9,31-Mar-26,Anand S,Medium,Partial Pay,Mumbai

@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PRs for Operations — Dashboard</title>
+    <meta name="description" content="Agent console and patch review dashboard for operational spreadsheet workflows." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="dashboard-page">
+
+    <!-- ─── Dashboard Nav ─── -->
+    <nav class="nav" id="mainNav">
+      <div class="nav-inner">
+        <a href="index.html" class="nav-brand">
+          <span class="brand-icon">⬡</span>
+          <span class="brand-text">PRs for Ops</span>
+        </a>
+        <div class="nav-links">
+          <span class="nav-page-label">Agent Dashboard</span>
+        </div>
+        <div class="nav-actions">
+          <button id="themeToggle" class="icon-button" type="button" aria-label="Toggle theme">
+            <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+            <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          </button>
+          <a href="index.html" class="btn btn-ghost btn-sm">← Back</a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- ─── Dashboard Workspace ─── -->
+    <div class="dash-shell page-shell">
+      <main class="workspace">
+
+        <!-- ═══ LEFT: Agent Console ═══ -->
+        <section class="panel controls-panel">
+          <div class="panel-header">
+            <div>
+              <p class="panel-kicker">Agent Console</p>
+              <h2>Approval-first workflow</h2>
+            </div>
+            <button id="resetButton" class="ghost-button" type="button">Reset</button>
+          </div>
+
+          <div class="control-stack">
+            <!-- Connection inputs (matches original prompt-card) -->
+            <div class="prompt-card">
+              <label for="spreadsheetIdInput">Google Sheet ID or Link</label>
+              <input
+                id="spreadsheetIdInput"
+                type="text"
+                autocomplete="off"
+                list="recentSheetIds"
+                placeholder="Paste spreadsheet id or full Google Sheets URL"
+              />
+              <datalist id="recentSheetIds"></datalist>
+              <div class="inline-row">
+                <label for="recentSheetSelect">Recent Sheets</label>
+                <select id="recentSheetSelect">
+                  <option value="">Select a recent sheet</option>
+                </select>
+              </div>
+
+              <label for="sheetNameInput">Raw tab name</label>
+              <input id="sheetNameInput" type="text" value="Receivables Raw" autocomplete="off" />
+
+              <!-- Prompt tabs -->
+              <div class="prompt-tabs" role="tablist" aria-label="Prompt configuration tabs">
+                <button id="taskPromptTabBtn" class="prompt-tab active" type="button" aria-selected="true">Task Prompt</button>
+                <button id="businessPromptTabBtn" class="prompt-tab" type="button" aria-selected="false">Business Context</button>
+              </div>
+
+              <div id="taskPromptView" class="prompt-view active">
+                <label for="promptInput">Operator prompt</label>
+                <textarea id="promptInput" rows="3" spellcheck="false">We're behind on collections. Build today's collections queue and fix the follow-ups.</textarea>
+              </div>
+
+              <div id="businessPromptView" class="prompt-view">
+                <label for="businessContextInput">Business context</label>
+                <textarea
+                  id="businessContextInput"
+                  rows="3"
+                  spellcheck="false"
+                  placeholder="Example: We are a diagnostics network focused on reducing 30+ day overdue AR."
+                ></textarea>
+
+                <label for="businessLogicInput">Business logic / SOP</label>
+                <textarea
+                  id="businessLogicInput"
+                  rows="3"
+                  spellcheck="false"
+                  placeholder="Example: Critical = >60 days OR high-value disputed invoices. Prioritize promise-to-pay closure."
+                ></textarea>
+
+                <label for="operatingStyleInput">Employee operating style</label>
+                <textarea
+                  id="operatingStyleInput"
+                  rows="3"
+                  spellcheck="false"
+                  placeholder="Example: Think like a senior collections lead: precise, risk-aware, and action-oriented."
+                ></textarea>
+              </div>
+
+              <div class="button-grid">
+                <button id="createDemoButton" class="secondary-button" type="button">Create Sample Sheet</button>
+                <button id="proposeButton" class="primary-button" type="button">Propose Changes</button>
+                <button id="bulkApproveButton" class="secondary-button" type="button" disabled>Bulk Approve Low-Risk</button>
+                <button id="applyButton" class="accent-button" type="button" disabled>Apply Approved</button>
+              </div>
+            </div>
+
+            <!-- Watch mode (matches original) -->
+            <div class="analysis-card">
+              <div class="section-heading">
+                <h3>Watch Mode</h3>
+                <button id="watchToggleButton" class="ghost-button" type="button">Start Watch</button>
+              </div>
+              <p id="watchState" class="watch-state">Watch mode is off.</p>
+            </div>
+
+            <!-- Decision card (matches original — hidden by default) -->
+            <div id="decisionCard" class="analysis-card hidden">
+              <div class="section-heading">
+                <h3>Decision Needed</h3>
+                <span id="decisionReason" class="muted-chip">Pending</span>
+              </div>
+              <p id="decisionQuestion" style="margin: 10px 0; font-weight: 600;">No decision needed.</p>
+              <ul id="decisionDetails" class="risk-list"></ul>
+              <div id="decisionActions" class="button-row" style="margin-top: 12px;"></div>
+            </div>
+
+            <!-- Workflow timeline (matches original timeline-card) -->
+            <section class="timeline-card">
+              <div class="section-heading">
+                <h3>Workflow</h3>
+                <span id="timelineBadge" class="status-pill idle">Idle</span>
+              </div>
+              <ol id="timeline" class="timeline"></ol>
+            </section>
+
+            <!-- Mapped Columns (matches original analysis-card) -->
+            <section class="analysis-card">
+              <div class="section-heading">
+                <h3>Mapped Columns</h3>
+                <span id="mappingCount" class="muted-chip">0 mapped</span>
+              </div>
+              <div id="mappingChips" class="chip-grid"></div>
+            </section>
+
+            <!-- Apply Summary (matches original analysis-card) -->
+            <section class="analysis-card">
+              <div class="section-heading">
+                <h3>Apply Summary</h3>
+                <span id="artifactChip" class="muted-chip">No artifact</span>
+              </div>
+              <div id="metrics" class="metric-grid">
+                <div class="metric-card">
+                  <span class="metric-label">Proposed patches</span>
+                  <strong id="proposedMetric">0</strong>
+                </div>
+                <div class="metric-card">
+                  <span class="metric-label">Approved patches</span>
+                  <strong id="approvedMetric">0</strong>
+                </div>
+                <div class="metric-card">
+                  <span class="metric-label">Projected recoverable</span>
+                  <strong id="recoverableMetric">₹0</strong>
+                </div>
+              </div>
+            </section>
+
+            <!-- Activity Log (matches original analysis-card) -->
+            <section class="analysis-card">
+              <div class="section-heading">
+                <h3>What Agent Did</h3>
+                <span id="activityChip" class="muted-chip">Waiting</span>
+              </div>
+              <ol id="activityLog" class="activity-log"></ol>
+            </section>
+
+            <!-- AI Review Intel (matches original analysis-card) -->
+            <section class="analysis-card">
+              <div class="section-heading">
+                <h3>AI Review Intel</h3>
+                <span id="aiChip" class="muted-chip">Rules only</span>
+              </div>
+              <p id="reviewSummary" class="review-summary">No review intelligence yet.</p>
+              <ul id="riskList" class="risk-list"></ul>
+            </section>
+          </div>
+        </section>
+
+        <!-- ═══ RIGHT: Sheet Panel ═══ -->
+        <section class="panel sheet-panel">
+
+          <!-- Sheet link (hidden by default, populated by backend) -->
+          <a id="sheetLink" class="sheet-link hidden" target="_blank" rel="noopener">Open in Google Sheets ↗</a>
+
+          <!-- Executive Dashboard KPIs (matches original exactly) -->
+          <section class="exec-dashboard">
+            <div class="kpi-grid">
+              <article class="kpi-card">
+                <span>Total Outstanding</span>
+                <strong id="kpiOutstanding">₹0</strong>
+              </article>
+              <article class="kpi-card">
+                <span>At Risk (30+ days)</span>
+                <strong id="kpiAtRisk">₹0</strong>
+              </article>
+              <article class="kpi-card">
+                <span>Projected Recovery</span>
+                <strong id="kpiRecovery">₹0</strong>
+              </article>
+            </div>
+            <div class="exec-grid">
+              <article class="exec-card">
+                <h3>Health Meter</h3>
+                <div class="health-track">
+                  <div id="healthFill" class="health-fill"></div>
+                </div>
+                <p id="healthLabel">No data yet.</p>
+              </article>
+              <article class="exec-card">
+                <h3>Aging Buckets</h3>
+                <div id="agingBuckets" class="aging-buckets"></div>
+              </article>
+              <article class="exec-card">
+                <h3>Action Needed</h3>
+                <p id="actionAlert">No new critical patches.</p>
+                <ul id="anomalyList" class="risk-list"></ul>
+              </article>
+            </div>
+          </section>
+
+          <!-- Patch Set Trigger — opens the drawer -->
+          <div class="patch-trigger-card">
+            <div class="patch-trigger-info">
+              <p class="panel-kicker">Review and Apply</p>
+              <h2>Patch set</h2>
+              <p id="statusMessage" class="status-message">Connect a sheet and click Propose Changes.</p>
+            </div>
+            <button id="openPatchDrawer" class="primary-button" type="button">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg>
+              Review Patches
+            </button>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <!-- ═══ Patch Set Drawer (slide-over) ═══ -->
+    <div id="patchDrawerOverlay" class="drawer-overlay">
+      <div id="patchDrawer" class="drawer">
+        <div class="drawer-header">
+          <div>
+            <p class="panel-kicker">Review and Apply</p>
+            <h2>Patch set</h2>
+          </div>
+          <div class="drawer-header-right">
+            <div class="sheet-tabs">
+              <button id="proposedTabBtn" class="sheet-tab active" type="button">Proposed Changes</button>
+              <button id="queueTabBtn" class="sheet-tab" type="button" disabled>Collections Queue</button>
+              <button id="reportTabBtn" class="sheet-tab" type="button" disabled>Report</button>
+            </div>
+            <button id="closePatchDrawer" class="icon-button" type="button" aria-label="Close drawer">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+          </div>
+        </div>
+        <div class="drawer-body">
+          <!-- Proposed Changes Table -->
+          <div id="proposedView" class="sheet-view active">
+            <div class="table-shell">
+              <table>
+                <thead>
+                  <tr>
+                    <th>
+                      <input id="selectAllPatches" type="checkbox" aria-label="Select all proposed patches" />
+                    </th>
+                    <th>Patch ID</th>
+                    <th>Row</th>
+                    <th>Customer</th>
+                    <th>Field</th>
+                    <th>Before</th>
+                    <th>After</th>
+                    <th>Reason</th>
+                    <th>Confidence</th>
+                    <th>Impact</th>
+                    <th>Risk</th>
+                    <th>Context</th>
+                  </tr>
+                </thead>
+                <tbody id="proposedBody"></tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Collections Queue Table -->
+          <div id="queueView" class="sheet-view">
+            <div class="table-shell">
+              <table>
+                <thead id="queueHead"></thead>
+                <tbody id="queueBody"></tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Report Table -->
+          <div id="reportView" class="sheet-view">
+            <div class="table-shell">
+              <table>
+                <thead id="reportHead"></thead>
+                <tbody id="reportBody"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="drawer-footer">
+          <button id="bulkApproveDrawer" class="secondary-button" type="button" onclick="document.getElementById('bulkApproveButton').click()">Bulk Approve Low-Risk</button>
+          <button id="applyDrawer" class="accent-button" type="button" onclick="document.getElementById('applyButton').click()">Apply Approved</button>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- ─── Toast ─── -->
+    <div class="toast" id="toast" role="alert" aria-live="polite">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+      <span id="toastMessage">Action completed</span>
+    </div>
+
+    <script src="/app.js"></script>
+  </body>
+</html>

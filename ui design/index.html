@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PRs for Operations</title>
+    <meta name="description" content="What pull requests do for code, this does for operations in spreadsheets. An approval-first agent for Google Sheets." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+
+    <!-- ─── Ambient orbs ─── -->
+    <div class="orb orb-1" aria-hidden="true"></div>
+    <div class="orb orb-2" aria-hidden="true"></div>
+
+    <!-- ─── Navigation ─── -->
+    <nav class="nav" id="mainNav">
+      <div class="nav-inner">
+        <a href="#" class="nav-brand">
+          <span class="brand-icon">⬡</span>
+          <span class="brand-text">PRs for Ops</span>
+        </a>
+        <div class="nav-links">
+          <a href="#how-it-works" class="nav-link">How it works</a>
+          <a href="#what-it-does" class="nav-link">What it does</a>
+        </div>
+        <div class="nav-actions">
+          <button id="themeToggle" class="icon-button" type="button" aria-label="Toggle theme">
+            <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+            <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          </button>
+          <a href="dashboard.html" class="btn btn-primary btn-sm" id="ctaNav">Launch Demo</a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- ─── Hero ─── -->
+    <header class="hero" id="hero">
+      <div class="hero-content">
+        <div class="hero-badge stagger-item">
+          <span class="pulse-dot"></span>
+          Hackathon Project
+        </div>
+        <h1 class="hero-title stagger-item">
+          Pull requests<br />
+          <span class="gradient-text">for your operations.</span>
+        </h1>
+        <p class="hero-subtitle stagger-item">
+          What pull requests do for code, this does for operations in spreadsheets.
+          The agent reads messy data, proposes a structured patch set, and only writes
+          changes after human approval.
+        </p>
+        <div class="hero-cta stagger-item">
+          <a href="dashboard.html" class="btn btn-primary btn-lg" id="heroCta">
+            <span>Launch Demo</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+          <a href="#how-it-works" class="btn btn-ghost btn-lg">See how it works</a>
+        </div>
+      </div>
+
+      <!-- Hero visual — Mockup card from the actual app -->
+      <div class="hero-visual stagger-item">
+        <div class="mockup-card" id="mockupCard">
+          <div class="mockup-header">
+            <div class="mockup-dots">
+              <span></span><span></span><span></span>
+            </div>
+            <span class="mockup-title">patch-review.sheet</span>
+          </div>
+          <div class="mockup-body">
+            <div class="mockup-row mockup-row-header">
+              <span>Field</span><span>Before</span><span>After</span><span>Risk</span>
+            </div>
+            <div class="mockup-row" data-delay="0">
+              <span>Status</span>
+              <span class="text-muted">Open</span>
+              <span class="text-accent">Follow Up</span>
+              <span class="risk-dot low"></span>
+            </div>
+            <div class="mockup-row" data-delay="1">
+              <span>Next Action</span>
+              <span class="text-muted">—</span>
+              <span class="text-accent">Call by 4pm</span>
+              <span class="risk-dot medium"></span>
+            </div>
+            <div class="mockup-row" data-delay="2">
+              <span>Priority</span>
+              <span class="text-muted">Normal</span>
+              <span class="text-accent">Critical</span>
+              <span class="risk-dot high"></span>
+            </div>
+            <div class="mockup-row" data-delay="3">
+              <span>Amount</span>
+              <span class="text-muted">₹4,20,000</span>
+              <span class="text-accent">₹4,35,000</span>
+              <span class="risk-dot low"></span>
+            </div>
+          </div>
+          <div class="mockup-footer">
+            <span class="mockup-status">4 patches proposed</span>
+            <div class="mockup-actions">
+              <button class="btn btn-ghost btn-xs" tabindex="-1">Reject</button>
+              <button class="btn btn-primary btn-xs" tabindex="-1">Approve All</button>
+            </div>
+          </div>
+        </div>
+        <!-- Floating badges -->
+        <div class="float-badge badge-1">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          Low Risk
+        </div>
+        <div class="float-badge badge-2">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          Approved
+        </div>
+      </div>
+    </header>
+
+    <!-- ─── How It Works ─── -->
+    <section class="section section-alt" id="how-it-works">
+      <div class="section-header">
+        <span class="section-label">How it works</span>
+        <h2 class="section-title">Three steps to<br /><span class="gradient-text">operational clarity.</span></h2>
+      </div>
+
+      <div class="workflow-grid">
+        <div class="workflow-step stagger-item" id="step1">
+          <div class="step-number">01</div>
+          <div class="step-content">
+            <h3>Connect & Describe</h3>
+            <p>Paste your Google Sheet ID and describe the task in plain language. Add business context for sharper results.</p>
+          </div>
+          <div class="step-visual">
+            <div class="input-mock">
+              <div class="input-mock-label">Task Prompt</div>
+              <div class="typing-text" id="typingText">Build today's collections queue...</div>
+              <div class="typing-cursor"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="workflow-connector">
+          <svg width="2" height="60" viewBox="0 0 2 60"><line x1="1" y1="0" x2="1" y2="60" stroke="currentColor" stroke-width="2" stroke-dasharray="4 4" opacity="0.3"/></svg>
+        </div>
+
+        <div class="workflow-step stagger-item" id="step2">
+          <div class="step-number">02</div>
+          <div class="step-content">
+            <h3>Review Patches</h3>
+            <p>The agent proposes a diff-style patch set. Each change shows the field, before/after values, reasoning, and risk level.</p>
+          </div>
+          <div class="step-visual">
+            <div class="patch-mini">
+              <div class="patch-mini-row">
+                <span class="patch-field">Status</span>
+                <span class="patch-before">Open</span>
+                <span class="patch-arrow">→</span>
+                <span class="patch-after">Follow Up</span>
+                <span class="risk-dot low"></span>
+              </div>
+              <div class="patch-mini-row">
+                <span class="patch-field">Priority</span>
+                <span class="patch-before">Normal</span>
+                <span class="patch-arrow">→</span>
+                <span class="patch-after">Critical</span>
+                <span class="risk-dot high"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="workflow-connector">
+          <svg width="2" height="60" viewBox="0 0 2 60"><line x1="1" y1="0" x2="1" y2="60" stroke="currentColor" stroke-width="2" stroke-dasharray="4 4" opacity="0.3"/></svg>
+        </div>
+
+        <div class="workflow-step stagger-item" id="step3">
+          <div class="step-number">03</div>
+          <div class="step-content">
+            <h3>Apply with Confidence</h3>
+            <p>Approve patches individually or in bulk. Only approved changes are written back to the sheet. Full audit trail preserved.</p>
+          </div>
+          <div class="step-visual">
+            <div class="apply-mock">
+              <div class="apply-bar">
+                <div class="apply-fill" id="applyFill"></div>
+              </div>
+              <span class="apply-label">4 of 4 patches applied</span>
+              <div class="apply-check">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── What It Does ─── -->
+    <section class="section" id="what-it-does">
+      <div class="section-header">
+        <span class="section-label">Core Idea</span>
+        <h2 class="section-title">What the agent<br /><span class="gradient-text">actually does.</span></h2>
+        <p class="section-desc">Built for the messy reality of spreadsheet-driven operations.</p>
+      </div>
+
+      <div class="features-grid">
+        <article class="feature-card stagger-item" id="feature1">
+          <div class="feature-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
+          </div>
+          <h3>Smart Column Mapping</h3>
+          <p>Automatically detects and maps messy column headers to a canonical schema. Handles typos, abbreviations, and non-standard naming.</p>
+        </article>
+
+        <article class="feature-card stagger-item" id="feature2">
+          <div class="feature-icon icon-accent">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+          </div>
+          <h3>Structured Patch Sets</h3>
+          <p>Every change is a reviewable patch with before/after values, risk levels, confidence scores, and human-readable reasoning.</p>
+        </article>
+
+        <article class="feature-card stagger-item" id="feature3">
+          <div class="feature-icon icon-green">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <h3>Approval-First Flow</h3>
+          <p>Nothing writes to your sheet without explicit approval. Bulk-approve low-risk, review high-risk individually.</p>
+        </article>
+
+        <article class="feature-card feature-card-wide stagger-item" id="feature4">
+          <div class="feature-icon icon-warm">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          </div>
+          <h3>AI Review Intelligence</h3>
+          <p>The agent explains its reasoning, flags anomalies, and provides risk-aware summaries. Transparent, auditable, and actionable.</p>
+          <div class="feature-visual">
+            <div class="ai-chat-bubble ai-bubble-1">
+              <span class="ai-avatar">🤖</span>
+              <div>
+                <strong>Agent Analysis</strong>
+                <p>Found 3 invoices >60 days overdue with no follow-up date. Recommending "Critical" priority with same-day callback.</p>
+              </div>
+            </div>
+            <div class="ai-chat-bubble ai-bubble-2">
+              <span class="ai-avatar">👤</span>
+              <div>
+                <strong>Operator</strong>
+                <p>Approve all. Set next action = "Escalate to Manager" for amounts > ₹5L.</p>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="feature-card feature-card-wide stagger-item" id="feature5">
+          <div class="feature-icon icon-purple">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          </div>
+          <h3>Executive Dashboard</h3>
+          <p>Real-time KPIs, aging buckets, health meters, and projected recovery — all derived automatically from your operational data.</p>
+          <div class="mini-dashboard">
+            <div class="mini-kpi">
+              <span>Outstanding</span>
+              <strong>₹18.4L</strong>
+            </div>
+            <div class="mini-kpi highlight">
+              <span>At Risk (30+d)</span>
+              <strong>₹6.2L</strong>
+            </div>
+            <div class="mini-kpi positive">
+              <span>Projected Recovery</span>
+              <strong>₹4.8L</strong>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ─── Demo Vertical ─── -->
+    <section class="section section-alt" id="demo-vertical">
+      <div class="demo-vertical-card stagger-item">
+        <div class="demo-vertical-info">
+          <span class="section-label">Demo Vertical</span>
+          <h3>Accounts Receivable / Collections</h3>
+          <p>This demo targets AR operations — the agent reads receivable data, identifies overdue invoices, 
+             assigns priorities, builds the daily collections queue, and patches the sheet with follow-up actions.</p>
+          <a href="dashboard.html" class="btn btn-primary btn-lg">
+            <span>Try the Dashboard</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+        <div class="demo-vertical-visual">
+          <div class="demo-flow">
+            <div class="flow-node">
+              <span class="flow-icon">📋</span>
+              <span>Raw Sheet</span>
+            </div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-node active">
+              <span class="flow-icon">🤖</span>
+              <span>Agent</span>
+            </div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-node">
+              <span class="flow-icon">📝</span>
+              <span>Patch Set</span>
+            </div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-node">
+              <span class="flow-icon">✅</span>
+              <span>Approval</span>
+            </div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-node">
+              <span class="flow-icon">📊</span>
+              <span>Updated Sheet</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── Footer ─── -->
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <span class="brand-icon">⬡</span>
+          <span class="brand-text">PRs for Ops</span>
+        </div>
+        <p class="footer-tagline">Built at Codex Hackathon — what pull requests do for code, this does for operations.</p>
+        <p class="footer-copy">Built with Google Sheets API, Gemini, and a belief that operators deserve better tools.</p>
+      </div>
+    </footer>
+
+    <!-- ─── Toast ─── -->
+    <div class="toast" id="toast" role="alert" aria-live="polite">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+      <span id="toastMessage">Action completed</span>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
